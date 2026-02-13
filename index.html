@@ -1,0 +1,2008 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KRATE — Everything Independent Artists Need</title>
+  <meta name="description" content="Beats, tools, DAW, community. Everything an independent artist needs. In one Krate.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ============================================
+       KRATE — Landing Page Styles
+       ============================================ */
+
+    :root {
+      --black: #000000;
+      --bg-primary: #08080a;
+      --bg-secondary: #0e0e12;
+      --bg-card: #111116;
+      --bg-card-hover: #16161c;
+      --gold-primary: #d4a022;
+      --gold-light: #f0c850;
+      --gold-dim: rgba(212, 160, 34, 0.3);
+      --gold-glow: rgba(212, 160, 34, 0.15);
+      --gold-border: rgba(212, 160, 34, 0.2);
+      --purple-primary: #8b5cf6;
+      --purple-dim: rgba(139, 92, 246, 0.3);
+      --white: #ffffff;
+      --text-primary: #f1f1f3;
+      --text-secondary: #a0a0aa;
+      --text-dim: #5a5a66;
+      --border-subtle: rgba(255, 255, 255, 0.06);
+      --border-light: rgba(255, 255, 255, 0.1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      line-height: 1.6;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ---- Utility ---- */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--gold-primary);
+      margin-bottom: 16px;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 20px;
+      height: 1px;
+      background: var(--gold-primary);
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(32px, 5vw, 52px);
+      font-weight: 700;
+      line-height: 1.1;
+      letter-spacing: -1px;
+      margin-bottom: 20px;
+    }
+
+    .section-subtitle {
+      font-size: 18px;
+      color: var(--text-secondary);
+      max-width: 560px;
+      line-height: 1.7;
+    }
+
+    .gold-text {
+      background: linear-gradient(135deg, var(--gold-light), var(--gold-primary), var(--gold-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    /* ============================================
+       NAVIGATION
+       ============================================ */
+    
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      padding: 0 24px;
+      transition: background 0.3s, backdrop-filter 0.3s;
+    }
+
+    nav.scrolled {
+      background: rgba(8, 8, 10, 0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .nav-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      height: 72px;
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .nav-logo-mark {
+      width: 36px;
+      height: 36px;
+      background: linear-gradient(145deg, var(--gold-light), var(--gold-primary));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--black);
+      box-shadow: 0 2px 12px var(--gold-dim);
+    }
+
+    .nav-logo-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: 4px;
+      color: var(--text-primary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text-secondary);
+      font-size: 14px;
+      font-weight: 500;
+      transition: color 0.2s;
+      letter-spacing: 0.3px;
+    }
+
+    .nav-links a:hover {
+      color: var(--text-primary);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
+      color: var(--black);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      border-radius: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s;
+      box-shadow: 0 2px 16px var(--gold-dim);
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 4px 24px rgba(212, 160, 34, 0.4);
+    }
+
+    .nav-mobile-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: var(--text-primary);
+      font-size: 24px;
+      cursor: pointer;
+    }
+
+    /* ============================================
+       HERO SECTION
+       ============================================ */
+
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 120px 24px 80px;
+    }
+
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 800px;
+      background: radial-gradient(circle, rgba(212, 160, 34, 0.08) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      bottom: -10%;
+      left: 20%;
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.05) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    /* Animated grid background */
+    .hero-grid {
+      position: absolute;
+      inset: 0;
+      background-image: 
+        linear-gradient(var(--border-subtle) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border-subtle) 1px, transparent 1px);
+      background-size: 60px 60px;
+      opacity: 0.4;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+      -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 70%);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 800px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 16px;
+      background: rgba(212, 160, 34, 0.08);
+      border: 1px solid var(--gold-border);
+      border-radius: 100px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--gold-primary);
+      letter-spacing: 1px;
+      margin-bottom: 32px;
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    .hero-badge-dot {
+      width: 6px;
+      height: 6px;
+      background: var(--gold-primary);
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+
+    .hero-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(48px, 10vw, 120px);
+      font-weight: 800;
+      line-height: 0.95;
+      letter-spacing: -3px;
+      margin-bottom: 8px;
+      animation: fadeInUp 0.8s ease-out 0.1s both;
+    }
+
+    .hero-title .gold-text {
+      display: block;
+    }
+
+    .hero-tagline {
+      font-size: clamp(16px, 3vw, 22px);
+      color: var(--text-secondary);
+      font-weight: 400;
+      margin-bottom: 48px;
+      line-height: 1.5;
+      animation: fadeInUp 0.8s ease-out 0.2s both;
+    }
+
+    .hero-tagline strong {
+      color: var(--text-primary);
+      font-weight: 600;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.8s ease-out 0.3s both;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
+      color: var(--black);
+      font-size: 15px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      border-radius: 10px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s;
+      box-shadow: 0 4px 24px var(--gold-dim);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 40px rgba(212, 160, 34, 0.4);
+    }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 16px 36px;
+      background: transparent;
+      color: var(--text-primary);
+      font-size: 15px;
+      font-weight: 600;
+      border-radius: 10px;
+      text-decoration: none;
+      border: 1px solid var(--border-light);
+      cursor: pointer;
+      transition: all 0.25s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--gold-border);
+      background: rgba(212, 160, 34, 0.05);
+      transform: translateY(-2px);
+    }
+
+    .hero-stats {
+      display: flex;
+      justify-content: center;
+      gap: 48px;
+      margin-top: 64px;
+      animation: fadeInUp 0.8s ease-out 0.4s both;
+    }
+
+    .hero-stat {
+      text-align: center;
+    }
+
+    .hero-stat-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--text-primary);
+    }
+
+    .hero-stat-label {
+      font-size: 12px;
+      color: var(--text-dim);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* Scroll indicator */
+    .scroll-indicator {
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      animation: fadeInUp 0.8s ease-out 0.5s both;
+    }
+
+    .scroll-indicator span {
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: var(--text-dim);
+      text-transform: uppercase;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: linear-gradient(to bottom, var(--gold-primary), transparent);
+      animation: scrollPulse 2s infinite;
+    }
+
+    /* ============================================
+       PRODUCTS SECTION
+       ============================================ */
+
+    .products {
+      padding: 120px 0;
+      position: relative;
+    }
+
+    .products-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .products-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .product-card {
+      position: relative;
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 32px 28px;
+      transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+      overflow: hidden;
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+    }
+
+    .product-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold-border), transparent);
+      opacity: 0;
+      transition: opacity 0.35s;
+    }
+
+    .product-card:hover {
+      background: var(--bg-card-hover);
+      border-color: var(--gold-border);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4), 0 0 40px var(--gold-glow);
+    }
+
+    .product-card:hover::before {
+      opacity: 1;
+    }
+
+    .product-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 22px;
+      margin-bottom: 20px;
+      position: relative;
+    }
+
+    .product-icon.gold {
+      background: linear-gradient(145deg, rgba(212, 160, 34, 0.15), rgba(212, 160, 34, 0.05));
+      border: 1px solid rgba(212, 160, 34, 0.2);
+    }
+
+    .product-icon.purple {
+      background: linear-gradient(145deg, rgba(139, 92, 246, 0.15), rgba(139, 92, 246, 0.05));
+      border: 1px solid rgba(139, 92, 246, 0.2);
+    }
+
+    .product-icon.white {
+      background: linear-gradient(145deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.03));
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .product-icon.orange {
+      background: linear-gradient(145deg, rgba(245, 158, 11, 0.15), rgba(245, 158, 11, 0.05));
+      border: 1px solid rgba(245, 158, 11, 0.2);
+    }
+
+    .product-tag {
+      display: inline-block;
+      padding: 4px 10px;
+      border-radius: 4px;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .product-tag.live {
+      background: rgba(34, 197, 94, 0.1);
+      color: #22c55e;
+      border: 1px solid rgba(34, 197, 94, 0.2);
+    }
+
+    .product-tag.soon {
+      background: rgba(212, 160, 34, 0.1);
+      color: var(--gold-primary);
+      border: 1px solid var(--gold-border);
+    }
+
+    .product-tag.beta {
+      background: rgba(139, 92, 246, 0.1);
+      color: var(--purple-primary);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+    }
+
+    .product-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      margin-bottom: 8px;
+      letter-spacing: 0.5px;
+    }
+
+    .product-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+      margin-bottom: 20px;
+    }
+
+    .product-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .product-tags span {
+      padding: 4px 10px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      border-radius: 4px;
+      font-size: 11px;
+      color: var(--text-dim);
+      font-weight: 500;
+    }
+
+    .product-arrow {
+      position: absolute;
+      top: 32px;
+      right: 28px;
+      font-size: 18px;
+      color: var(--text-dim);
+      transition: all 0.3s;
+    }
+
+    .product-card:hover .product-arrow {
+      color: var(--gold-primary);
+      transform: translate(4px, -4px);
+    }
+
+    /* Featured product (full width) */
+    .product-featured {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    .product-featured-content {
+      padding: 48px 40px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .product-featured-visual {
+      position: relative;
+      background: linear-gradient(135deg, rgba(139, 92, 246, 0.05), rgba(139, 92, 246, 0.02));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 300px;
+      overflow: hidden;
+    }
+
+    .product-featured-visual .daw-mockup {
+      width: 90%;
+      height: 80%;
+      background: var(--bg-primary);
+      border-radius: 8px;
+      border: 1px solid var(--border-subtle);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .daw-mockup-header {
+      height: 32px;
+      background: rgba(20, 20, 30, 0.8);
+      border-bottom: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      gap: 6px;
+    }
+
+    .daw-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    .daw-dot.red { background: #ef4444; }
+    .daw-dot.yellow { background: #eab308; }
+    .daw-dot.green { background: #22c55e; }
+
+    .daw-mockup-tracks {
+      padding: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .daw-track {
+      height: 24px;
+      border-radius: 4px;
+      opacity: 0.6;
+    }
+
+    .daw-track:nth-child(1) {
+      background: linear-gradient(90deg, var(--purple-primary), rgba(139, 92, 246, 0.3));
+      width: 85%;
+    }
+    .daw-track:nth-child(2) {
+      background: linear-gradient(90deg, var(--gold-primary), rgba(212, 160, 34, 0.3));
+      width: 70%;
+    }
+    .daw-track:nth-child(3) {
+      background: linear-gradient(90deg, #22c55e, rgba(34, 197, 94, 0.3));
+      width: 90%;
+    }
+    .daw-track:nth-child(4) {
+      background: linear-gradient(90deg, #ec4899, rgba(236, 72, 153, 0.3));
+      width: 60%;
+    }
+    .daw-track:nth-child(5) {
+      background: linear-gradient(90deg, #06b6d4, rgba(6, 182, 212, 0.3));
+      width: 75%;
+    }
+
+    /* ============================================
+       FEATURES / WHY KRATE
+       ============================================ */
+
+    .why-section {
+      padding: 120px 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .why-header {
+      text-align: center;
+      margin-bottom: 72px;
+    }
+
+    .why-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+    }
+
+    .why-item {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .why-icon {
+      font-size: 36px;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .why-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 18px;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+
+    .why-desc {
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ============================================
+       BEATS / MARKETPLACE PREVIEW
+       ============================================ */
+
+    .beats-section {
+      padding: 120px 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .beats-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 48px;
+    }
+
+    .beats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+    }
+
+    .beat-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+
+    .beat-card:hover {
+      border-color: var(--gold-border);
+      transform: translateY(-3px);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    .beat-artwork {
+      aspect-ratio: 1;
+      background: linear-gradient(135deg, var(--bg-secondary), var(--bg-card));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .beat-artwork::after {
+      content: '▶';
+      position: absolute;
+      font-size: 24px;
+      color: white;
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .beat-card:hover .beat-artwork::after {
+      opacity: 0.8;
+    }
+
+    .beat-waveform {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+      height: 40px;
+    }
+
+    .beat-waveform span {
+      width: 3px;
+      background: var(--gold-primary);
+      border-radius: 2px;
+      opacity: 0.5;
+      animation: waveBar 1.5s ease-in-out infinite;
+    }
+
+    .beat-info {
+      padding: 14px;
+    }
+
+    .beat-title {
+      font-size: 14px;
+      font-weight: 600;
+      margin-bottom: 4px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .beat-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .beat-details {
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+
+    .beat-price {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold-primary);
+    }
+
+    .beat-price.free {
+      color: #22c55e;
+    }
+
+    /* ============================================
+       TIERS / PRICING
+       ============================================ */
+
+    .pricing-section {
+      padding: 120px 0;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .pricing-header {
+      text-align: center;
+      margin-bottom: 64px;
+    }
+
+    .pricing-header .section-subtitle {
+      margin: 0 auto;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .pricing-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: 16px;
+      padding: 36px 28px;
+      position: relative;
+      transition: all 0.3s;
+    }
+
+    .pricing-card.featured {
+      border-color: var(--gold-border);
+      background: linear-gradient(180deg, rgba(212, 160, 34, 0.06), var(--bg-card));
+      box-shadow: 0 0 60px var(--gold-glow);
+      transform: scale(1.02);
+    }
+
+    .pricing-card.featured::before {
+      content: 'MOST POPULAR';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      padding: 4px 16px;
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
+      color: var(--black);
+      font-size: 10px;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      border-radius: 100px;
+      white-space: nowrap;
+    }
+
+    .pricing-tier {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 8px;
+    }
+
+    .pricing-card.featured .pricing-tier {
+      color: var(--gold-primary);
+    }
+
+    .pricing-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+
+    .pricing-price {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 40px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .pricing-price span {
+      font-size: 16px;
+      font-weight: 400;
+      color: var(--text-dim);
+    }
+
+    .pricing-period {
+      font-size: 13px;
+      color: var(--text-dim);
+      margin-bottom: 28px;
+    }
+
+    .pricing-features {
+      list-style: none;
+      margin-bottom: 32px;
+    }
+
+    .pricing-features li {
+      padding: 8px 0;
+      font-size: 14px;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+
+    .pricing-features li:last-child {
+      border-bottom: none;
+    }
+
+    .pricing-features li::before {
+      content: '✓';
+      color: var(--gold-primary);
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .pricing-btn {
+      display: block;
+      width: 100%;
+      padding: 14px;
+      text-align: center;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.25s;
+      cursor: pointer;
+    }
+
+    .pricing-btn.primary {
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-light));
+      color: var(--black);
+      border: none;
+      box-shadow: 0 4px 20px var(--gold-dim);
+    }
+
+    .pricing-btn.primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(212, 160, 34, 0.4);
+    }
+
+    .pricing-btn.outline {
+      background: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border-light);
+    }
+
+    .pricing-btn.outline:hover {
+      border-color: var(--gold-border);
+      background: rgba(212, 160, 34, 0.05);
+    }
+
+    /* ============================================
+       COMMUNITY / CTA
+       ============================================ */
+
+    .cta-section {
+      padding: 120px 0;
+      border-top: 1px solid var(--border-subtle);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      background: radial-gradient(circle, rgba(212, 160, 34, 0.06) 0%, transparent 70%);
+      border-radius: 50%;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+
+    .cta-subtitle {
+      font-size: 18px;
+      color: var(--text-secondary);
+      margin-bottom: 40px;
+      max-width: 500px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-actions {
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    /* ============================================
+       FOOTER
+       ============================================ */
+
+    footer {
+      border-top: 1px solid var(--border-subtle);
+      padding: 60px 0 40px;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 48px;
+      margin-bottom: 48px;
+    }
+
+    .footer-brand .nav-logo {
+      margin-bottom: 16px;
+    }
+
+    .footer-brand p {
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.7;
+      max-width: 280px;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 12px;
+      margin-top: 20px;
+    }
+
+    .footer-social {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid var(--border-subtle);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 16px;
+      transition: all 0.2s;
+    }
+
+    .footer-social:hover {
+      border-color: var(--gold-border);
+      background: rgba(212, 160, 34, 0.08);
+    }
+
+    .footer-col h4 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+    }
+
+    .footer-col li {
+      margin-bottom: 10px;
+    }
+
+    .footer-col a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 14px;
+      transition: color 0.2s;
+    }
+
+    .footer-col a:hover {
+      color: var(--text-primary);
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 32px;
+      border-top: 1px solid var(--border-subtle);
+    }
+
+    .footer-bottom p {
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    /* ============================================
+       ANIMATIONS
+       ============================================ */
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(24px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    @keyframes scrollPulse {
+      0% { opacity: 0; transform: scaleY(0); transform-origin: top; }
+      50% { opacity: 1; transform: scaleY(1); transform-origin: top; }
+      100% { opacity: 0; transform: scaleY(1); transform-origin: bottom; }
+    }
+
+    @keyframes waveBar {
+      0%, 100% { height: 20%; }
+      50% { height: 80%; }
+    }
+
+    /* Scroll-triggered animations */
+    .animate-in {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .animate-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ============================================
+       RESPONSIVE
+       ============================================ */
+
+    @media (max-width: 968px) {
+      .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .product-featured {
+        grid-template-columns: 1fr;
+      }
+
+      .why-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .beats-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 400px;
+      }
+
+      .pricing-card.featured {
+        transform: none;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 32px;
+      }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links {
+        display: none;
+      }
+
+      .nav-mobile-toggle {
+        display: block;
+      }
+
+      .products-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .why-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .beats-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .beats-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 16px;
+      }
+
+      .hero-stats {
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .hero-actions {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .hero-actions .btn-primary,
+      .hero-actions .btn-secondary {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ============================================
+       NAVIGATION
+       ============================================ -->
+  <nav id="mainNav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <div class="nav-logo-mark">K</div>
+        <span class="nav-logo-text">KRATE</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#products">Products</a></li>
+        <li><a href="#beats">Beats</a></li>
+        <li><a href="#pricing">Pricing</a></li>
+        <li><a href="#community">Community</a></li>
+      </ul>
+
+      <div style="display:flex;align-items:center;gap:16px;">
+        <a href="#" style="color:var(--text-secondary);text-decoration:none;font-size:14px;font-weight:500;">Sign In</a>
+        <a href="#" class="nav-cta">Open Your Krate</a>
+      </div>
+
+      <button class="nav-mobile-toggle" id="mobileToggle">☰</button>
+    </div>
+  </nav>
+
+  <!-- ============================================
+       HERO
+       ============================================ -->
+  <section class="hero">
+    <div class="hero-bg">
+      <div class="hero-grid"></div>
+    </div>
+
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="hero-badge-dot"></span>
+        FORMERLY RAPPERSTORE — NOW FOR ALL ARTISTS
+      </div>
+
+      <h1 class="hero-title">
+        <span>Open Your</span>
+        <span class="gold-text">KRATE</span>
+      </h1>
+
+      <p class="hero-tagline">
+        Beats. Tools. DAW. Community.<br>
+        <strong>Everything an independent artist needs. In one place.</strong>
+      </p>
+
+      <div class="hero-actions">
+        <a href="#" class="btn-primary">
+          Get Started Free
+          <span>→</span>
+        </a>
+        <a href="#products" class="btn-secondary">
+          <span>▶</span>
+          Explore Products
+        </a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="hero-stat">
+          <div class="hero-stat-value">5+</div>
+          <div class="hero-stat-label">Creative Tools</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">1K+</div>
+          <div class="hero-stat-label">Beats & Sounds</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">100%</div>
+          <div class="hero-stat-label">Browser-Based</div>
+        </div>
+        <div class="hero-stat">
+          <div class="hero-stat-value">\$0</div>
+          <div class="hero-stat-label">To Start</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       PRODUCTS
+       ============================================ -->
+  <section class="products" id="products">
+    <div class="container">
+      <div class="products-header animate-in">
+        <div class="section-label">Ecosystem</div>
+        <h2 class="section-title">Everything in the <span class="gold-text">Krate</span></h2>
+        <p class="section-subtitle">A complete suite of tools designed for independent artists. No installs. No friction. Just create.</p>
+      </div>
+
+      <div class="products-grid">
+        
+        <!-- WAVR — Featured -->
+        <a href="#" class="product-card product-featured animate-in">
+          <div class="product-featured-content">
+            <div class="product-icon purple">🎛️</div>
+            <div class="product-tag beta">COMING SOON</div>
+            <div class="product-name">WAVR</div>
+            <div class="product-desc">Professional DAW for vocal recording, multi-track editing, MIDI production — all in your browser. With built-in effects including WAVR Tune pitch correction.</div>
+            <div class="product-tags">
+              <span>Recording</span>
+              <span>Multi-Track</span>
+              <span>MIDI</span>
+              <span>Effects</span>
+              <span>Auto-Tune</span>
+            </div>
+          </div>
+          <div class="product-featured-visual">
+            <div class="daw-mockup">
+              <div class="daw-mockup-header">
+                <div class="daw-dot red"></div>
+                <div class="daw-dot yellow"></div>
+                <div class="daw-dot green"></div>
+              </div>
+              <div class="daw-mockup-tracks">
+                <div class="daw-track"></div>
+                <div class="daw-track"></div>
+                <div class="daw-track"></div>
+                <div class="daw-track"></div>
+                <div class="daw-track"></div>
+              </div>
+            </div>
+          </div>
+          <span class="product-arrow">↗</span>
+        </a>
+
+        <!-- LYRIC -->
+        <a href="#" class="product-card animate-in">
+          <div class="product-icon white">✍️</div>
+          <span class="product-arrow">↗</span>
+          <div class="product-tag live">LIVE</div>
+          <div class="product-name">LYRIC</div>
+          <div class="product-desc">AI-powered notepad for songwriting. Brainstorm ideas, structure verses, enhance lyrics — with intelligent suggestions.</div>
+          <div class="product-tags">
+            <span>AI Writing</span>
+            <span>Songwriting</span>
+            <span>Rhyme Tools</span>
+          </div>
+        </a>
+
+        <!-- VAULT -->
+        <a href="#" class="product-card animate-in">
+          <div class="product-icon gold">🔒</div>
+          <span class="product-arrow">↗</span>
+          <div class="product-tag live">LIVE</div>
+          <div class="product-name">VAULT</div>
+          <div class="product-desc">Secure cloud storage for your music, stems, sessions, and creative assets. Your work, protected and accessible anywhere.</div>
+          <div class="product-tags">
+            <span>Cloud Storage</span>
+            <span>Assets</span>
+            <span>Stems</span>
+          </div>
+        </a>
+
+        <!-- BEATS -->
+        <a href="#" class="product-card animate-in">
+          <div class="product-icon orange">🎹</div>
+          <span class="product-arrow">↗</span>
+          <div class="product-tag live">LIVE</div>
+          <div class="product-name">BEATS</div>
+          <div class="product-desc">Marketplace for instrumentals. Find your sound from producers worldwide. Licensed, ready to use, free and premium options.</div>
+          <div class="product-tags">
+            <span>Marketplace</span>
+            <span>Licensed</span>
+            <span>All Genres</span>
+          </div>
+        </a>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       WHY KRATE
+       ============================================ -->
+  <section class="why-section">
+    <div class="container">
+      <div class="why-header animate-in">
+        <div class="section-label">Why Krate</div>
+        <h2 class="section-title">Built for <span class="gold-text">Independents</span></h2>
+        <p class="section-subtitle">We don't gatekeep creativity. Professional tools shouldn't require a professional budget.</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-item animate-in">
+          <span class="why-icon">🌐</span>
+          <div class="why-title">100% Browser-Based</div>
+          <div class="why-desc">No downloads, no installs, no compatibility headaches. Open a tab and start creating from any device.</div>
+        </div>
+
+        <div class="why-item animate-in">
+          <span class="why-icon">🎨</span>
+          <div class="why-title">Every Genre, Every Artist</div>
+          <div class="why-desc">Whether you rap, sing, produce, or DJ — Krate tools are genre-agnostic and built for your workflow.</div>
+        </div>
+
+        <div class="why-item animate-in">
+          <span class="why-icon">🚀</span>
+          <div class="why-title">Start Free, Scale Up</div>
+          <div class="why-desc">Generous free tier with real tools — not crippled demos. Upgrade when you're ready, not when we force you.</div>
+        </div>
+
+        <div class="why-item animate-in">
+          <span class="why-icon">🔗</span>
+          <div class="why-title">One Ecosystem</div>
+          <div class="why-desc">Write lyrics in LYRIC, find a beat in BEATS, record in WAVR, store in VAULT. Everything connected.</div>
+        </div>
+
+        <div class="why-item animate-in">
+          <span class="why-icon">👑</span>
+          <div class="why-title">Community-Driven</div>
+          <div class="why-desc">Earn XP, level up, collaborate with other artists. Your Krate grows with you.</div>
+        </div>
+
+        <div class="why-item animate-in">
+          <span class="why-icon">🛡️</span>
+          <div class="why-title">You Own Your Art</div>
+          <div class="why-desc">Clear licensing, secure storage, no hidden terms. Your creations are yours. Period.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       BEATS MARKETPLACE PREVIEW
+       ============================================ -->
+  <section class="beats-section" id="beats">
+    <div class="container">
+      <div class="beats-header">
+        <div class="animate-in">
+          <div class="section-label">Marketplace</div>
+          <h2 class="section-title">Fresh from the <span class="gold-text">Krate</span></h2>
+          <p class="section-subtitle">Licensed instrumentals for every style. New beats added weekly.</p>
+        </div>
+        <a href="#" class="btn-secondary animate-in" style="flex-shrink:0;">Browse All Beats →</a>
+      </div>
+
+      <div class="beats-grid">
+        <div class="beat-card animate-in">
+          <div class="beat-artwork">
+            <div class="beat-waveform">
+              <span style="height:30%;animation-delay:0s"></span>
+              <span style="height:60%;animation-delay:0.1s"></span>
+              <span style="height:45%;animation-delay:0.2s"></span>
+              <span style="height:80%;animation-delay:0.3s"></span>
+              <span style="height:55%;animation-delay:0.4s"></span>
+              <span style="height:70%;animation-delay:0.5s"></span>
+              <span style="height:40%;animation-delay:0.6s"></span>
+              <span style="height:65%;animation-delay:0.7s"></span>
+              <span style="height:35%;animation-delay:0.8s"></span>
+              <span style="height:50%;animation-delay:0.9s"></span>
+            </div>
+          </div>
+          <div class="beat-info">
+            <div class="beat-title">Brick & Echo</div>
+            <div class="beat-meta">
+              <span class="beat-details">98 BPM • Eb Minor</span>
+              <span class="beat-price free">FREE</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="beat-card animate-in">
+          <div class="beat-artwork">
+            <div class="beat-waveform">
+              <span style="height:50%;animation-delay:0.2s"></span>
+              <span style="height:75%;animation-delay:0.3s"></span>
+              <span style="height:40%;animation-delay:0.4s"></span>
+              <span style="height:90%;animation-delay:0.5s"></span>
+              <span style="height:60%;animation-delay:0.6s"></span>
+              <span style="height:45%;animation-delay:0.7s"></span>
+              <span style="height:70%;animation-delay:0.8s"></span>
+              <span style="height:55%;animation-delay:0.9s"></span>
+              <span style="height:80%;animation-delay:1.0s"></span>
+              <span style="height:35%;animation-delay:1.1s"></span>
+            </div>
+          </div>
+          <div class="beat-info">
+            <div class="beat-title">Midnight Run</div>
+            <div class="beat-meta">
+              <span class="beat-details">140 BPM • F# Minor</span>
+              <span class="beat-price">\$24.99</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="beat-card animate-in">
+          <div class="beat-artwork">
+            <div class="beat-waveform">
+              <span style="height:65%;animation-delay:0.1s"></span>
+              <span style="height:40%;animation-delay:0.2s"></span>
+              <span style="height:85%;animation-delay:0.3s"></span>
+              <span style="height:50%;animation-delay:0.4s"></span>
+              <span style="height:70%;animation-delay:0.5s"></span>
+              <span style="height:35%;animation-delay:0.6s"></span>
+              <span style="height:60%;animation-delay:0.7s"></span>
+              <span style="height:90%;animation-delay:0.8s"></span>
+              <span style="height:45%;animation-delay:0.9s"></span>
+              <span style="height:75%;animation-delay:1.0s"></span>
+            </div>
+          </div>
+          <div class="beat-info">
+            <div class="beat-title">Golden Hour</div>
+            <div class="beat-meta">
+              <span class="beat-details">120 BPM • C Major</span>
+              <span class="beat-price">\$19.99</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="beat-card animate-in">
+          <div class="beat-artwork">
+            <div class="beat-waveform">
+              <span style="height:45%;animation-delay:0.3s"></span>
+              <span style="height:80%;animation-delay:0.4s"></span>
+              <span style="height:55%;animation-delay:0.5s"></span>
+              <span style="height:70%;animation-delay:0.6s"></span>
+              <span style="height:40%;animation-delay:0.7s"></span>
+              <span style="height:90%;animation-delay:0.8s"></span>
+              <span style="height:60%;animation-delay:0.9s"></span>
+              <span style="height:35%;animation-delay:1.0s"></span>
+              <span style="height:75%;animation-delay:1.1s"></span>
+              <span style="height:50%;animation-delay:1.2s"></span>
+            </div>
+          </div>
+          <div class="beat-info">
+            <div class="beat-title">Southside Drip</div>
+            <div class="beat-meta">
+              <span class="beat-details">155 BPM • D Minor</span>
+              <span class="beat-price free">FREE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       PRICING
+       ============================================ -->
+  <section class="pricing-section" id="pricing">
+    <div class="container">
+      <div class="pricing-header animate-in">
+        <div class="section-label">Pricing</div>
+        <h2 class="section-title">Pick Your <span class="gold-text">Tier</span></h2>
+        <p class="section-subtitle">Start free, level up when you're ready. No tricks, no trials, no traps.</p>
+      </div>
+
+      <div class="pricing-grid">
+        
+        <!-- Free -->
+        <div class="pricing-card animate-in">
+          <div class="pricing-tier">Explorer</div>
+          <div class="pricing-name">Digger</div>
+          <div class="pricing-price">\$0</div>
+          <div class="pricing-period">Free forever</div>
+          <ul class="pricing-features">
+            <li>Access to LYRIC notepad</li>
+            <li>Browse & preview beats</li>
+            <li>Community access</li>
+            <li>2 free beat downloads/mo</li>
+            <li>500MB Vault storage</li>
+            <li>Basic XP progression</li>
+          </ul>
+          <a href="#" class="pricing-btn outline">Get Started</a>
+        </div>
+
+        <!-- Pro -->
+        <div class="pricing-card featured animate-in">
+          <div class="pricing-tier">Power User</div>
+          <div class="pricing-name">Curator</div>
+          <div class="pricing-price">\$9<span>/mo</span></div>
+          <div class="pricing-period">Billed monthly or \$89/yr</div>
+          <ul class="pricing-features">
+            <li>Everything in Digger</li>
+            <li>Full WAVR DAW access</li>
+            <li>WAVR Tune pitch correction</li>
+            <li>10GB Vault storage</li>
+            <li>Unlimited beat previews</li>
+            <li>Priority community features</li>
+            <li>Premium toolkits & presets</li>
+          </ul>
+          <a href="#" class="pricing-btn primary">Open Your Krate</a>
+        </div>
+
+        <!-- Master -->
+        <div class="pricing-card animate-in">
+          <div class="pricing-tier">Master</div>
+          <div class="pricing-name">Kingpin</div>
+          <div class="pricing-price">\$24<span>/mo</span></div>
+          <div class="pricing-period">Billed monthly or \$229/yr</div>
+          <ul class="pricing-features">
+            <li>Everything in Curator</li>
+            <li>100GB Vault storage</li>
+            <li>Sell beats on marketplace</li>
+            <li>Exclusive producer tools</li>
+            <li>Collaboration rooms</li>
+            <li>Priority support</li>
+            <li>Early access to new features</li>
+          </ul>
+          <a href="#" class="pricing-btn outline">Go Kingpin</a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       CTA
+       ============================================ -->
+  <section class="cta-section" id="community">
+    <div class="container">
+      <div class="cta-content animate-in">
+        <div class="section-label" style="justify-content:center;">Join the Movement</div>
+        <h2 class="cta-title">
+          What's in<br>
+          <span class="gold-text">your Krate?</span>
+        </h2>
+        <p class="cta-subtitle">Join thousands of independent artists building their careers with professional tools — no label required.</p>
+        <div class="cta-actions">
+          <a href="#" class="btn-primary" style="font-size:17px;padding:18px 44px;">
+            Open Your Krate — It's Free
+            <span>→</span>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER
+       ============================================ -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo">
+            <div class="nav-logo-mark">K</div>
+            <span class="nav-logo-text">KRATE</span>
+          </a>
+          <p>Everything independent artists need. Beats, tools, DAW, community. All in one Krate.</p>
+          <div class="footer-socials">
+            <a href="#" class="footer-social">𝕏</a>
+            <a href="#" class="footer-social">📷</a>
+            <a href="#" class="footer-social">▶</a>
+            <a href="#" class="footer-social">💬</a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Products</h4>
+          <ul>
+            <li><a href="#">WAVR — DAW</a></li>
+            <li><a href="#">LYRIC — Writing</a></li>
+            <li><a href="#">VAULT — Storage</a></li>
+            <li><a href="#">Beats Marketplace</a></li>
+            <li><a href="#">WAVR Tune</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Community</h4>
+          <ul>
+            <li><a href="#">Discord</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Tutorials</a></li>
+            <li><a href="#">Artist Spotlights</a></li>
+            <li><a href="#">Changelog</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Pricing</a></li>
+            <li><a href="#">Terms</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2025 Krate. All rights reserved.</p>
+        <p style="color:var(--text-dim);font-size:11px;">Formerly Rapperstore — Now for every artist.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================
+       SCRIPTS
+       ============================================ -->
+  <script>
+    // ----    // ---- Navigation scroll effect ----
+    const nav = document.getElementById('mainNav');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled');
+      } else {
+        nav.classList.remove('scrolled');
+      }
+    });
+
+    // ---- Scroll-triggered animations ----
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          // Stagger animations for siblings
+          const parent = entry.target.parentElement;
+          const siblings = parent.querySelectorAll('.animate-in');
+          let delay = 0;
+          
+          siblings.forEach((sibling) => {
+            if (sibling === entry.target) {
+              setTimeout(() => {
+                entry.target.classList.add('visible');
+              }, delay);
+            }
+          });
+          
+          // Simple fallback — just animate with small delay
+          setTimeout(() => {
+            entry.target.classList.add('visible');
+          }, 100);
+          
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    document.querySelectorAll('.animate-in').forEach((el, i) => {
+      // Add staggered delay based on position in parent
+      const parent = el.parentElement;
+      const siblings = Array.from(parent.querySelectorAll('.animate-in'));
+      const indexInParent = siblings.indexOf(el);
+      el.style.transitionDelay = `${indexInParent * 0.1}s`;
+      observer.observe(el);
+    });
+
+    // ---- Smooth scroll for anchor links ----
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+          const navHeight = 72;
+          const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
+
+    // ---- Mobile navigation toggle ----
+    const mobileToggle = document.getElementById('mobileToggle');
+    const navLinks = document.querySelector('.nav-links');
+    let mobileMenuOpen = false;
+
+    if (mobileToggle) {
+      mobileToggle.addEventListener('click', () => {
+        mobileMenuOpen = !mobileMenuOpen;
+        
+        if (mobileMenuOpen) {
+          navLinks.style.display = 'flex';
+          navLinks.style.flexDirection = 'column';
+          navLinks.style.position = 'absolute';
+          navLinks.style.top = '72px';
+          navLinks.style.left = '0';
+          navLinks.style.right = '0';
+          navLinks.style.background = 'rgba(8, 8, 10, 0.95)';
+          navLinks.style.backdropFilter = 'blur(20px)';
+          navLinks.style.padding = '24px';
+          navLinks.style.gap = '20px';
+          navLinks.style.borderBottom = '1px solid rgba(255,255,255,0.06)';
+          mobileToggle.textContent = '✕';
+        } else {
+          navLinks.style.display = '';
+          navLinks.style.flexDirection = '';
+          navLinks.style.position = '';
+          navLinks.style.top = '';
+          navLinks.style.left = '';
+          navLinks.style.right = '';
+          navLinks.style.background = '';
+          navLinks.style.backdropFilter = '';
+          navLinks.style.padding = '';
+          navLinks.style.gap = '';
+          navLinks.style.borderBottom = '';
+          mobileToggle.textContent = '☰';
+        }
+      });
+    }
+
+    // ---- Beat card hover play simulation ----
+    document.querySelectorAll('.beat-card').forEach(card => {
+      card.addEventListener('mouseenter', () => {
+        const bars = card.querySelectorAll('.beat-waveform span');
+        bars.forEach(bar => {
+          bar.style.animationPlayState = 'running';
+        });
+      });
+      
+      card.addEventListener('mouseleave', () => {
+        const bars = card.querySelectorAll('.beat-waveform span');
+        bars.forEach(bar => {
+          bar.style.animationPlayState = 'paused';
+        });
+      });
+    });
+
+    // Pause waveform animations by default
+    document.querySelectorAll('.beat-waveform span').forEach(bar => {
+      bar.style.animationPlayState = 'paused';
+    });
+
+    // ---- Parallax on hero grid ----
+    const heroGrid = document.querySelector('.hero-grid');
+    if (heroGrid) {
+      window.addEventListener('scroll', () => {
+        const scrolled = window.pageYOffset;
+        if (scrolled < window.innerHeight) {
+          heroGrid.style.transform = `translateY(${scrolled * 0.3}px)`;
+          heroGrid.style.opacity = Math.max(0, 0.4 - scrolled / window.innerHeight * 0.4);
+        }
+      });
+    }
+
+    // ---- Counter animation for hero stats ----
+    function animateCounter(el, target, suffix = '') {
+      const duration = 2000;
+      const start = 0;
+      const startTime = performance.now();
+      
+      function update(currentTime) {
+        const elapsed = currentTime - startTime;
+        const progress = Math.min(elapsed / duration, 1);
+        
+        // Ease out cubic
+        const eased = 1 - Math.pow(1 - progress, 3);
+        const current = Math.round(start + (target - start) * eased);
+        
+        el.textContent = current + suffix;
+        
+        if (progress < 1) {
+          requestAnimationFrame(update);
+        }
+      }
+      
+      requestAnimationFrame(update);
+    }
+
+    // Trigger stat counters when hero is visible
+    const heroStats = document.querySelector('.hero-stats');
+    if (heroStats) {
+      const statsObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const statValues = entry.target.querySelectorAll('.hero-stat-value');
+            statValues.forEach(stat => {
+              const text = stat.textContent;
+              if (text.includes('K')) {
+                const num = parseFloat(text);
+                animateCounter(stat, num, 'K+');
+              } else if (text.includes('%')) {
+                const num = parseInt(text);
+                animateCounter(stat, num, '%');
+              } else if (text.includes('$')) {
+                stat.textContent = '\$0'; // stays as is
+              } else if (text.includes('+')) {
+                const num = parseInt(text);
+                animateCounter(stat, num, '+');
+              }
+            });
+            statsObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.5 });
+      
+      statsObserver.observe(heroStats);
+    }
+
+    // ---- Keyboard shortcut: Escape closes mobile menu ----
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && mobileMenuOpen) {
+        mobileToggle.click();
+      }
+    });
+
+    // ---- Console branding ----
+    console.log(
+      '%c KRATE %c Everything independent artists need. ',
+      'background: linear-gradient(135deg, #d4a022, #f0c850); color: #000; font-size: 16px; font-weight: 800; padding: 8px 16px; border-radius: 4px 0 0 4px;',
+      'background: #111; color: #a0a0aa; font-size: 12px; padding: 8px 16px; border-radius: 0 4px 4px 0;'
+    );
+  </script>
+</body>
+</html>
